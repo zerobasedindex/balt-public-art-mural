@@ -22,6 +22,11 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        // Setup camera to point to baltimore
 
+        // Add at least 3 pins, maybe OrderUp HQ, Goucher College, and pick a restaurant
+
+        // Draw a polyline around the Baltimore city boundry
+        // You'll have to google to get lat/lon points for that boundry
     }
 }
