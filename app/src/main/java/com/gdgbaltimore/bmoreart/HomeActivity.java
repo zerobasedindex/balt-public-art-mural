@@ -1,8 +1,8 @@
 package com.gdgbaltimore.bmoreart;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,12 +10,20 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-import static com.gdgbaltimore.bmoreart.R.id.map;
-
 public class HomeActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+    private static final LatLng[] BMORE_BOUNDRY = new LatLng[] {
+        new LatLng(39.372264, -76.711529),
+        new LatLng(39.372264, -76.529649),
+        new LatLng(39.207672, -76.532966),
+        new LatLng(39.197325, -76.550081),
+        new LatLng(39.207578, -76.583704),
+        new LatLng(39.234661, -76.611865),
+        new LatLng(39.277896, -76.711035),
+        new LatLng(39.372264, -76.711529),
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +31,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_home);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(map);
+                .findFragmentById(R.id.map);
 
         mapFragment.getMapAsync(this);
     }
@@ -43,9 +51,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         // Draw a polyline around the Baltimore city boundry
         // You'll have to google to get lat/lon points for that boundry
-
-        Polyline line = googleMap.addPolyline(new PolylineOptions().add(new LatLng(39.372264, -76.711529), new LatLng(39.372264, -76.529649), new LatLng(39.207672, -76.532966),
-                new LatLng(39.197325, -76.550081), new LatLng(39.207578, -76.583704), new LatLng(39.234661, -76.611865), new LatLng(39.277896, -76.711035), new LatLng(39.372264, -76.711529))
+        googleMap.addPolyline(new PolylineOptions().add(BMORE_BOUNDRY)
                 .width(5)
                 .color(Color.RED));
 
